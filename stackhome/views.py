@@ -1,22 +1,22 @@
-from django.shortcuts import render
+from django.http import Http404
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from stackhome.models import Apartment
 from stackhome.serializers import ApartmentSerializer
 
 
-@api_view(['GET', 'POST'])
-def apartment_list(request):
-    """
-    List all code snippets, or create a new snippet.
-    """
-    if request.method == 'GET':
+class ApartmentList(APIView):
+
+    def get(self, request, format=None):
+        """
+        List all code snippets, or create a new snippet.
+        """
         apartment = Apartment.objects.all()
         serializer = ApartmentSerializer(apartment, many=True)
         return Response(serializer.data)
 
-    elif request.method == 'POST':
+    def post(self, request, format=None):
         serializer = ApartmentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -24,27 +24,29 @@ def apartment_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
-def apartment_detail(request, pk):
+class ApartmentDetail(APIView):
     """
-    Retrieve, update or delete a code snippet.
-    """
-    try:
-        apartment = Apartment.objects.get(pk=pk)
-    except Apartment.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+            Retrieve, update or delete a code snippet.
+            """
+    def get_object(self, request, pk):
+        try:
+            return Apartment.objects.get(pk=pk)
+        except Apartment.DoesNotExist:
+            raise Http404
 
-    if request.method == 'GET':
-        serializer = ApartmentSerializer(apartment)
+    def get(self, request, pk, format=None):
+        serializer = ApartmentSerializer(self.get_object(request, pk))
         return Response(serializer.data)
 
-    elif request.method == 'PUT':
+    def put(self, request, pk, format=None):
+        apartment = self.get_object(request, pk)
         serializer = ApartmentSerializer(apartment, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
+    def delete(self, request, pk, format=None):
+        apartment = self.get_object(request, pk)
         apartment.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
