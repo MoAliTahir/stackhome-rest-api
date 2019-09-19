@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Apartment(models.Model):
@@ -9,7 +10,7 @@ class Apartment(models.Model):
         (3, 'three'),
         (4, 'four'),
     )
-    owner = models.ForeignKey('auth.User', related_name='apartments', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='apartments', on_delete=models.CASCADE)
     address = models.CharField(max_length=1000)
     equipped = models.BooleanField(default=False)
     available = models.BooleanField(default=True)
