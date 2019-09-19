@@ -4,9 +4,8 @@
     <list default="true" id="f009d18d-60b0-44e6-9b80-be87624004cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhome/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhome/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhome/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stackhome/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stackhome/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +89,7 @@
       <workItem from="1568471823250" duration="456000" />
       <workItem from="1568546791264" duration="216000" />
       <workItem from="1568570879298" duration="3936000" />
-      <workItem from="1568728297753" duration="6170000" />
+      <workItem from="1568728297753" duration="7577000" />
     </task>
     <servers />
   </component>
