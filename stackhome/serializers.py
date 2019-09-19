@@ -8,7 +8,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'apartments']
+        # fields = ['id', 'username', 'apartments']
+        fields = '__all__'
 
 
 class ApartmentSerializer(serializers.ModelSerializer):
