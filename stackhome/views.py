@@ -1,7 +1,7 @@
 from rest_framework import generics
 from stackhome.models import Apartment
 from stackhome.serializers import ApartmentSerializer, UserSerializer
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from rest_framework import permissions
 from stackhome.permissions import IsOwnerOrReadOnly
 
@@ -21,13 +21,13 @@ class ApartmentDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
 
-class UserList(generics.ListAPIView):
-    queryset = User.objects.all()
+class UserList(generics.ListCreateAPIView):
+    queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
 
 
-class UserDetail(generics.RetrieveAPIView):
-    queryset = User.objects.all()
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
 
 
