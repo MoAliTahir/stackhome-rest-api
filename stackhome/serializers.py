@@ -8,8 +8,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        # fields = ['id', 'username', 'apartments']
-        fields = '__all__'
+        fields = ['id', 'email', 'id_card', 'phone_number', 'full_name',
+                  'active', 'staff', 'admin', 'created_at', 'last_login', 'apartments']
+        # extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         user = get_user_model().objects.create_user(
@@ -32,3 +33,12 @@ class ApartmentSerializer(serializers.ModelSerializer):
         model = Apartment
         fields = ['owner', 'address', 'equipped', 'bedrooms', 'living_room', 'bathroom',
                   'price', 'features', 'description', 'available', 'created']
+
+
+class UserRegisterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = [
+            'email', 'id_card', 'phone_number', 'full_name',
+            'active', 'staff', 'admin', 'password'
+        ]

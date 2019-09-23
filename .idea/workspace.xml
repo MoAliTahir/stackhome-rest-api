@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f009d18d-60b0-44e6-9b80-be87624004cb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/stackhome/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/stackhome/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stackhome/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stackhome/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stackhome/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/permissions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stackhome/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stackhome/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stackhome/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhomeRestApi/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhomeRestApi/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +58,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -115,7 +116,11 @@
       <workItem from="1568728297753" duration="15064000" />
       <workItem from="1568995876033" duration="3836000" />
       <workItem from="1569023484130" duration="6358000" />
-      <workItem from="1569064809791" duration="3111000" />
+      <workItem from="1569064809791" duration="11687000" />
+      <workItem from="1569154074259" duration="709000" />
+      <workItem from="1569154822961" duration="288000" />
+      <workItem from="1569157463845" duration="6142000" />
+      <workItem from="1569241916197" duration="1392000" />
     </task>
     <servers />
   </component>

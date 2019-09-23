@@ -7,6 +7,7 @@ urlpatterns = [
     path('apartments/<int:pk>/', views.ApartmentDetail.as_view()),
 
     path('users/', views.UserList.as_view()),
+    path('users/register', views.UserRegister.as_view()),
     path('users/<int:pk>/', views.UserDetail.as_view()),
 
     path('apartments/me/', views.MyApartments.as_view()),
