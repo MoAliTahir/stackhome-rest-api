@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f009d18d-60b0-44e6-9b80-be87624004cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/stackhome/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stackhome/migrations/0002_rent_room.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhome/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhome/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stackhome/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stackhome/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/permissions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhome/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stackhome/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stackhome/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/views.py" afterDir="false" />
     </list>
@@ -120,7 +117,9 @@
       <workItem from="1569154074259" duration="709000" />
       <workItem from="1569154822961" duration="288000" />
       <workItem from="1569157463845" duration="6142000" />
-      <workItem from="1569241916197" duration="1392000" />
+      <workItem from="1569241916197" duration="3419000" />
+      <workItem from="1570110866985" duration="328000" />
+      <workItem from="1570134699690" duration="5043000" />
     </task>
     <servers />
   </component>

@@ -22,3 +22,8 @@ class IsTheUserOrReadOnly(permissions.BasePermission):
             return True
 
         return request.user.pk == obj.pk
+
+
+class IsStaff(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.user.staff

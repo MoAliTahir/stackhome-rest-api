@@ -3,13 +3,18 @@ from stackhome.models import Apartment
 from stackhome.serializers import ApartmentSerializer, UserSerializer, UserRegisterSerializer
 from django.contrib.auth import get_user_model
 from rest_framework import permissions
-from stackhome.permissions import IsOwnerOrReadOnly, IsTheUserOrReadOnly
+from stackhome.permissions import IsOwnerOrReadOnly, IsTheUserOrReadOnly, IsStaff
 
 
-class ApartmentList(generics.ListCreateAPIView):
+class ApartmentList(generics.ListAPIView):
     queryset = Apartment.objects.all()
     serializer_class = ApartmentSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class ApartmentAdd(generics.CreateAPIView):
+    queryset = Apartment.objects.all()
+    serializer_class = ApartmentSerializer
+    permission_classes = [permissions.IsAuthenticated, IsStaff]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

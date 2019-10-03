@@ -91,7 +91,7 @@ class User(AbstractBaseUser):
         # The user is identified by their email address
         return self.email
 
-    def __str__(self):              # __unicode__ on Python 2
+    def __str__(self):  # __unicode__ on Python 2
         return self.email
 
     def has_perm(self, perm, obj=None):
@@ -146,3 +146,50 @@ class Apartment(models.Model):
 
     def __str__(self):
         return self.address + " - " + str(self.price)
+
+
+class Room(models.Model):
+    NUMBERS = (
+        (0, 'zero'),
+        (1, 'one'),
+        (2, 'two'),
+        (3, 'three'),
+        (4, 'four'),
+    )
+    owner = models.ForeignKey(User, related_name='rooms', on_delete=models.CASCADE)
+    address = models.CharField(max_length=1000)
+    equipped = models.BooleanField(default=False)
+    available = models.BooleanField(default=True)
+    attached_bath = models.BooleanField(default=False)
+    price = models.IntegerField()
+    beds = models.IntegerField(choices=NUMBERS)
+    features = models.CharField(max_length=1000)  # fridge-gas stove-balcony-water heater-dish
+    # washer-washing machine-surveillance camera-cooking tools-oven
+    description = models.CharField(max_length=1000)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created']
+
+    def __str__(self):
+        return self.address + " - " + str(self.price)
+
+
+class Rent(models.Model):
+    STATE = (
+        (0, 'Pending'),
+        (1, 'Approved'),
+        (2, 'Ignored'),
+    )
+    tenant = models.ForeignKey(User, related_name='rents', on_delete=models.SET(None))
+    apartment = models.ForeignKey(Apartment, related_name='rents', on_delete=models.CASCADE, null=True)
+    room = models.ForeignKey(Room, related_name='rents', on_delete=models.CASCADE, null=True)
+    state = models.IntegerField(choices=STATE, default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['created_at']
+
+    def __str__(self):
+        return self.tenant + " - state : " + str(self.state)
