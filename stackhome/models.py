@@ -5,7 +5,7 @@ from django.contrib.auth.models import (
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, id_card, phone_number, full_name, password=None, is_staff=False, is_admin=False):
+    def create_user(self, email, id_card, phone_number, full_name, password=None, is_staff=False, is_admin=False, image="default.jpg"):
         """
         Creates and saves a User with the given email and password.
         """
@@ -28,10 +28,11 @@ class UserManager(BaseUserManager):
         user.full_name = full_name
         user.staff = is_staff
         user.admin = is_admin
+        user.image = image
         user.save(using=self._db)
         return user
 
-    def create_staffuser(self, email, id_card, phone_number, full_name, password):
+    def create_staffuser(self, email, id_card, phone_number, full_name, password, image):
         """
         Creates and saves a staff user with the given email and password.
         """
@@ -42,11 +43,12 @@ class UserManager(BaseUserManager):
             full_name=full_name,
             is_staff=True,
             password=password,
+            image=image,
         )
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, id_card, phone_number, full_name, password):
+    def create_superuser(self, email, id_card, phone_number, full_name, password, image):
         """
         Creates and saves a superuser with the given email and password.
         """
@@ -58,6 +60,7 @@ class UserManager(BaseUserManager):
             is_staff=True,
             is_admin=True,
             password=password,
+            image=image,
         )
         user.save(using=self._db)
         return user
@@ -77,6 +80,7 @@ class User(AbstractBaseUser):
     admin = models.BooleanField(default=False)  # a superuser
     # notice the absence of a "Password field", that's built in.
     created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(default="default.jpg", upload_to="profile_pics")
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['id_card', 'phone_number', 'full_name']  # Email & Password are required by default.

@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ['id', 'email', 'id_card', 'phone_number', 'full_name',
+        fields = ['id', 'image', 'email', 'id_card', 'phone_number', 'full_name',
                   'active', 'staff', 'admin', 'created_at', 'last_login', 'apartments']
         # extra_kwargs = {'password': {'write_only': True}}
 
@@ -21,6 +21,7 @@ class UserSerializer(serializers.ModelSerializer):
             validated_data['password'],
             validated_data['staff'],
             validated_data['admin'],
+            validated_data['image'],
         )
 
         return user
@@ -40,5 +41,5 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         model = get_user_model()
         fields = [
             'email', 'id_card', 'phone_number', 'full_name',
-            'active', 'staff', 'admin', 'password'
+            'active', 'staff', 'admin', 'password', 'image',
         ]
