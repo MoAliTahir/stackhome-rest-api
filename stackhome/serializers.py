@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from stackhome.models import Apartment
+from stackhome.models import Apartment, Room
 from django.contrib.auth import get_user_model
 
 
@@ -43,3 +43,11 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             'email', 'id_card', 'phone_number', 'full_name',
             'active', 'staff', 'admin', 'password', 'image',
         ]
+
+
+class RoomSerializer(serializers.ModelSerializer):
+    owner = UserSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = Room
+        fields = '__all__'

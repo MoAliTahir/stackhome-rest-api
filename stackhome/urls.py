@@ -12,6 +12,12 @@ urlpatterns = [
 
     path('apartments/me/', views.MyApartments.as_view()),
     path('apartments/add/', views.ApartmentAdd.as_view()),
+
+
+    path('rooms/', views.RoomList.as_view()),
+    path('rooms/<int:pk>/', views.RoomDetail.as_view()),
+    path('rooms/me/', views.MyRooms.as_view()),
+    path('rooms/add/', views.RoomAdd.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

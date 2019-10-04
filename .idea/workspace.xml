@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f009d18d-60b0-44e6-9b80-be87624004cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/media/default.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/profile_pics/28.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/profile_pics/default.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stackhome/migrations/0003_user_image.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhome/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stackhome/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhomeRestApi/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhomeRestApi/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhomeRestApi/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhomeRestApi/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stackhome/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stackhome/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +55,15 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/media/profile_pics" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ALI\Documents\Programming\django\stackhomeRestApi\media\profile_pics" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ALI\Documents\Programming\django\stackhomeRestApi\media" />
+      <recent name="C:\Users\ALI\Documents\Programming\django\stackhomeRestApi\media\profile_pics" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -124,7 +128,7 @@
       <workItem from="1569241916197" duration="3419000" />
       <workItem from="1570110866985" duration="328000" />
       <workItem from="1570134699690" duration="6874000" />
-      <workItem from="1570145707016" duration="779000" />
+      <workItem from="1570145707016" duration="2968000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,6 @@
 from rest_framework import generics
-from stackhome.models import Apartment
-from stackhome.serializers import ApartmentSerializer, UserSerializer, UserRegisterSerializer
+from stackhome.models import Apartment, Room
+from stackhome.serializers import ApartmentSerializer, UserSerializer, UserRegisterSerializer, RoomSerializer
 from django.contrib.auth import get_user_model
 from rest_framework import permissions
 from stackhome.permissions import IsOwnerOrReadOnly, IsTheUserOrReadOnly, IsStaff
@@ -49,3 +49,33 @@ class MyApartments(generics.ListAPIView):
     def get_queryset(self):
         user = self.request.user
         return Apartment.objects.filter(owner=user)
+
+
+# Rooms ______________________
+class RoomList(generics.ListAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+
+
+class RoomDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+
+
+class RoomAdd(generics.CreateAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+    permission_classes = [permissions.IsAuthenticated, IsStaff]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
+class MyRooms(generics.ListAPIView):
+    serializer_class = RoomSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Room.objects.filter(owner=user)
