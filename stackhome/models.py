@@ -2,10 +2,22 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
+from multiselectfield import MultiSelectField
+
+
+DISTRICTS = (
+        ("M'hannech","M'hannech"), ("Touta","Touta"), ("Martil","Martil"), ("Wilaya","Wilaya"),
+        ("Saniat Rmel","Saniat Rmel"), ("Safir","Safir"),("Soukna w Ta3mir","Soukna w Ta3mir"),
+        ("Autre","Autre")
+)
+NUMBERS = (
+    (0, 'zero'), (1, 'one'), (2, 'two'), (3, 'three'), (4, 'four'),
+)
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, id_card, phone_number, full_name, password=None, is_staff=False, is_admin=False, image="default.jpg"):
+    def create_user(self, email, id_card, phone_number, full_name, password=None, is_staff=False, is_admin=False,
+                    image="default.jpg"):
         """
         Creates and saves a User with the given email and password.
         """
@@ -32,7 +44,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_staffuser(self, email, id_card, phone_number, full_name, password, image):
+    def create_staffuser(self, email, id_card, phone_number, full_name, password, image="default.jpg"):
         """
         Creates and saves a staff user with the given email and password.
         """
@@ -48,7 +60,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, id_card, phone_number, full_name, password, image):
+    def create_superuser(self, email, id_card, phone_number, full_name, password, image="default.jpg"):
         """
         Creates and saves a superuser with the given email and password.
         """
@@ -125,25 +137,31 @@ class User(AbstractBaseUser):
 
 
 class Apartment(models.Model):
-    NUMBERS = (
-        (0, 'zero'),
-        (1, 'one'),
-        (2, 'two'),
-        (3, 'three'),
-        (4, 'four'),
+    FEATURES = (
+        ("Fridge", "Fridge"), ("Gas stove", "Gas stove"), ("Balcony", "Balcony"), ("Water heater", "Water heater"),
+        ("Dish washer", "Dish washer"), ("Washing machine", "Washing machine"), ("television", "television"),
+        ("Surveillance camera", "Surveillance camera"), ("Cooking tools", "Cooking tools"), ("Oven", "Oven"),
+        ("Wifi", "Wifi"),
     )
     owner = models.ForeignKey(User, related_name='apartments', on_delete=models.CASCADE)
     address = models.CharField(max_length=1000)
+    district = models.CharField(max_length=20, choices=DISTRICTS)
     equipped = models.BooleanField(default=False)
     available = models.BooleanField(default=True)
     bedrooms = models.IntegerField(choices=NUMBERS)
     living_room = models.IntegerField(choices=NUMBERS)
     bathroom = models.IntegerField(choices=NUMBERS, default=1)
     price = models.IntegerField(default=0)
-    features = models.CharField(max_length=1000)  # fridge-gas stove-balcony-water heater-dish
+    features = MultiSelectField(choices=FEATURES)  # fridge-gas stove-balcony-water heater-dish
     # washer-washing machine-surveillance camera-cooking tools-oven
-    description = models.CharField(max_length=1000)
+    description = models.TextField(max_length=1000)
     created = models.DateTimeField(auto_now_add=True)
+    img1 = models.FileField(upload_to='apartment_pics', blank=True)
+    img2 = models.FileField(upload_to='apartment_pics', blank=True)
+    img3 = models.FileField(upload_to='apartment_pics', blank=True)
+    img4 = models.FileField(upload_to='apartment_pics', blank=True)
+    img5 = models.FileField(upload_to='apartment_pics', blank=True)
+    img6 = models.FileField(upload_to='apartment_pics', blank=True)
 
     class Meta:
         ordering = ['created']
@@ -153,24 +171,24 @@ class Apartment(models.Model):
 
 
 class Room(models.Model):
-    NUMBERS = (
-        (0, 'zero'),
-        (1, 'one'),
-        (2, 'two'),
-        (3, 'three'),
-        (4, 'four'),
+    FEATURES = (
+        ("Fridge", "Fridge"), ("Desk", "Desk"), ("Balcony", "Balcony"),
+        ("Cabinet", "Cabinet"), ("Attached bath", "Attached bath"),
     )
     owner = models.ForeignKey(User, related_name='rooms', on_delete=models.CASCADE)
     address = models.CharField(max_length=1000)
+    district = models.CharField(max_length=20, choices=DISTRICTS)
     equipped = models.BooleanField(default=False)
     available = models.BooleanField(default=True)
-    attached_bath = models.BooleanField(default=False)
     price = models.IntegerField()
     beds = models.IntegerField(choices=NUMBERS)
-    features = models.CharField(max_length=1000)  # fridge-gas stove-balcony-water heater-dish
+    features = MultiSelectField(choices=FEATURES, blank=True)  # fridge-gas stove-balcony-water heater-dish
     # washer-washing machine-surveillance camera-cooking tools-oven
-    description = models.CharField(max_length=1000)
+    description = models.TextField(max_length=1000)
     created = models.DateTimeField(auto_now_add=True)
+    img1 = models.FileField(upload_to='apartment_pics', blank=True)
+    img2 = models.FileField(upload_to='apartment_pics', blank=True)
+    img3 = models.FileField(upload_to='apartment_pics', blank=True)
 
     class Meta:
         ordering = ['created']
@@ -185,9 +203,9 @@ class Rent(models.Model):
         (1, 'Approved'),
         (2, 'Ignored'),
     )
-    tenant = models.ForeignKey(User, related_name='rents', on_delete=models.SET(None))
-    apartment = models.ForeignKey(Apartment, related_name='rents', on_delete=models.CASCADE, null=True)
-    room = models.ForeignKey(Room, related_name='rents', on_delete=models.CASCADE, null=True)
+    tenant = models.ForeignKey(User, related_name='rents', on_delete=models.DO_NOTHING)
+    apartment = models.ForeignKey(Apartment, related_name='rents', on_delete=models.DO_NOTHING, null=True)
+    room = models.ForeignKey(Room, related_name='rents', on_delete=models.DO_NOTHING, null=True)
     state = models.IntegerField(choices=STATE, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -196,4 +214,4 @@ class Rent(models.Model):
         ordering = ['created_at']
 
     def __str__(self):
-        return self.tenant + " - state : " + str(self.state)
+        return self.tenant.full_name + " - state : " + str(self.state)

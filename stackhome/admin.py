@@ -1,5 +1,5 @@
 from django.contrib import admin
-from stackhome.models import Apartment
+from stackhome.models import Apartment, Room, Rent
 from django.contrib.auth import get_user_model
 from .forms import UserAdminChangeForm, UserAdminCreationForm
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
@@ -52,3 +52,5 @@ class ApartmentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Apartment, ApartmentAdmin)
+admin.site.register(Room)
+admin.site.register(Rent)

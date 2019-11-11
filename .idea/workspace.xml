@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f009d18d-60b0-44e6-9b80-be87624004cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhome/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhome/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhome/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,6 +100,26 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@51b9238" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@51b9238" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@12f7577c" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -128,7 +145,21 @@
       <workItem from="1569241916197" duration="3419000" />
       <workItem from="1570110866985" duration="328000" />
       <workItem from="1570134699690" duration="6874000" />
-      <workItem from="1570145707016" duration="2968000" />
+      <workItem from="1570145707016" duration="3056000" />
+      <workItem from="1570539881957" duration="823000" />
+      <workItem from="1572211777523" duration="2684000" />
+      <workItem from="1572261729697" duration="4101000" />
+      <workItem from="1572635846338" duration="1013000" />
+      <workItem from="1572703153866" duration="767000" />
+      <workItem from="1572976473420" duration="572000" />
+      <workItem from="1573001891457" duration="4008000" />
+      <workItem from="1573232748984" duration="13646000" />
+      <workItem from="1573258280586" duration="3766000" />
+      <workItem from="1573316648957" duration="3114000" />
+      <workItem from="1573343848887" duration="6055000" />
+      <workItem from="1573353403013" duration="510000" />
+      <workItem from="1573384806879" duration="528000" />
+      <workItem from="1573386734281" duration="19450000" />
     </task>
     <servers />
   </component>

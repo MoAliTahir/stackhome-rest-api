@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'stackhome.apps.StackhomeConfig',
     'rest_framework',
+    'corsheaders',
+
 ]
 
 AUTH_USER_MODEL = 'stackhome.User'
@@ -47,6 +49,7 @@ AUTH_USER_MODEL = 'stackhome.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -127,4 +130,8 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:4200',
+]
 
