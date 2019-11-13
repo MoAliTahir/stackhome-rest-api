@@ -12,7 +12,7 @@ from stackhome.permissions import IsOwnerOrReadOnly, IsTheUserOrReadOnly, IsStaf
 
 
 class ApartmentList(generics.ListAPIView):
-    queryset = Apartment.objects.all()
+    queryset = Apartment.objects.filter(available=True)  # just those available
     serializer_class = ApartmentSerializer
 
 
@@ -58,7 +58,7 @@ class MyApartments(generics.ListAPIView):
 
 # Rooms ______________________
 class RoomList(generics.ListAPIView):
-    queryset = Room.objects.all()
+    queryset = Room.objects.filter(available=True)  # filters just those available
     serializer_class = RoomSerializer
 
 
@@ -87,9 +87,12 @@ class MyRooms(generics.ListAPIView):
 
 
 class NewRent(APIView):
-    def get_object(self, pk):
+    def get_object(self, model, pk):
         try:
-            return Apartment.objects.get(pk=pk)
+            if model:
+                return Apartment.objects.get(pk=pk)
+            else:
+                return Room.objects.get(pk=pk)
         except Apartment.DoesNotExist:
             raise Http404
 
@@ -97,16 +100,29 @@ class NewRent(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, pk):
-        apartment = self.get_object(pk=pk)
-        data = {
-            "tenant": self.request.user.pk,
-            "apartment": apartment.pk,
-        }
-        serializer = RentSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if request.data["apartment"]:
+            house = self.get_object(model=True, pk=pk)   # getting an apartment
+            data = {
+                "tenant": self.request.user.pk,
+                "apartment": house.pk,
+            }
+        else:
+            house = self.get_object(model=False, pk=pk)  # house should be a room
+            data = {
+                "tenant": self.request.user.pk,
+                "room": house.pk,
+            }
+
+        if not house.available:
+            return Response("This house isn't available right now", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            house.available = False
+            house.save()
+            serializer = RentSerializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class RentsView(generics.ListAPIView):
