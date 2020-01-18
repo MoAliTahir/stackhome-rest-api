@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f009d18d-60b0-44e6-9b80-be87624004cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stackhome/disable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/stackhomeRestApi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stackhomeRestApi.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackhome/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhome/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stackhomeRestApi/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackhomeRestApi/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,8 +54,8 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/media/profile_pics" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -163,7 +165,10 @@
       <workItem from="1573384806879" duration="528000" />
       <workItem from="1573386734281" duration="20917000" />
       <workItem from="1573595158983" duration="1677000" />
-      <workItem from="1573607464515" duration="4593000" />
+      <workItem from="1573607464515" duration="4837000" />
+      <workItem from="1579184296948" duration="261000" />
+      <workItem from="1579368929931" duration="116000" />
+      <workItem from="1579369210667" duration="5497000" />
     </task>
     <servers />
   </component>
