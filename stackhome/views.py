@@ -1,5 +1,6 @@
 from django.http import Http404
 from rest_framework import generics, status
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -101,7 +102,7 @@ class NewRent(APIView):
 
     def post(self, request, pk):
         if request.data["apartment"]:
-            house = self.get_object(model=True, pk=pk)   # getting an apartment
+            house = self.get_object(model=True, pk=pk)  # getting an apartment
             data = {
                 "tenant": self.request.user.pk,
                 "apartment": house.pk,
@@ -129,3 +130,9 @@ class RentsView(generics.ListAPIView):
     queryset = Rent.objects.all()
     serializer_class = ListRentSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+@api_view(['GET'])
+def single_user(request):
+    serializer = UserSerializer(request.user)
+    return Response(serializer.data)

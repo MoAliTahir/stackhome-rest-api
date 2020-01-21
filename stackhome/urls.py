@@ -1,4 +1,6 @@
 from django.urls import path
+from rest_framework.authtoken.views import obtain_auth_token
+
 from stackhome import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
@@ -9,6 +11,7 @@ urlpatterns = [
 
     path('register/', views.UserRegister.as_view()),
     path('users/', views.UserList.as_view()),
+    path('users/me/', views.single_user),
     path('users/<int:pk>/', views.UserDetail.as_view()),
 
     path('apartments/me/', views.MyApartments.as_view()),
@@ -21,6 +24,8 @@ urlpatterns = [
     path('rooms/add/', views.RoomAdd.as_view()),
 
     path('rents', views.RentsView.as_view()),
+
+    path('token/', obtain_auth_token, name='api_token_auth'),
 
 ]
 
